@@ -8,7 +8,7 @@ export default function TodoApp() {
   const [todo, setTodo] = useState({ name: '', completed: false })
   const [todos, setTodos] = useState([
     { id: 1, name: "Go grocery shopping", completed: false },
-    { id: 2, name: "Buy snacks", completed: true },
+    { id: 2, name: "Buy snacks", completed: true }
   ])
 
   function handleTodo(event){
@@ -17,7 +17,7 @@ export default function TodoApp() {
 
   function handleDelete(id) {
     console.log('delete')
-    // setTodos(updatedTodos)
+
   }
 
   function handleSubmit(event){
