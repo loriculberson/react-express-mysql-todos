@@ -9,6 +9,6 @@ router.get('/todos', function (req, res) {
   db.Todo.findAll({})
     .then((todos) => {
       console.log(todos);
-      return res.json(todos);
+      res.send(todos);
     });
 });

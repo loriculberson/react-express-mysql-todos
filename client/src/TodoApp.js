@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import Header from './components/Header'
 import TodoForm from './components/TodoForm'
 import Container from './components/Container'
+import axios from 'axios'
 
 export default function TodoApp() {
   const [todo, setTodo] = useState({ name: '', completed: false })
@@ -10,6 +11,20 @@ export default function TodoApp() {
     { id: 1, name: "Go grocery shopping", completed: false },
     { id: 2, name: "Buy snacks", completed: true },
   ])
+
+  useEffect(() => {
+    console.log('useEffect todos!!!')
+    async function fetchTodos (){
+      try {
+        const response = await axios('/api/todos')
+        const data = await response.json()
+        setTodos(data)
+      } catch (e) {
+        console.log(e.message)
+      }
+    }
+    fetchTodos()
+  }, [])
 
   function handleTodo(event){
     setTodo({...todo, name: event.target.value})
